@@ -1,9 +1,80 @@
-#content {
-  margin-left: auto;
-  margin-right: auto;
-  width: 650px;
+
+body{
+  margin: 0;
+  padding: 0;
+  background: url(images/rose2.jpg) no-repeat;
+  background-size: cover;
+}
+.about,
+.project,
+.books {
+  width: 450px;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 40px;
+  text-align: center;
+  margin: auto;
+  margin-top: 5%;
+  color: white;
+  font-family: 'Century Gothic',sans-serif;
 }
 
-#greeting-container {
-  margin-top: 20px;
+.about-img,
+.project-img,
+.books-img{
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
 }
+
+.about h1,
+.project h1,
+.books h1{
+  font-size: 40px;
+  letter-spacing: 4px;
+  font-weight: 100;
+}
+
+.about h5,
+.project h5,
+.books h5{
+  font-size: 20px;
+  letter-spacing: 3px;
+  font-weight: 100;
+  font-family: 'Century Gothic',sans-serif;
+
+  
+}
+
+.about p, 
+.project p,
+.books p{
+  text-align: justify;
+}
+
+ul{
+  margin: 0;
+  padding: 0;
+}
+.about li,
+.project li,
+.books li{
+  display: inline-block;
+  margin: 6px;
+  list-style: none;
+}
+
+.about li a,
+.project li a,
+.books li a {
+  color: white;
+  text-decoration: none;
+  font-size: 60px;
+  transition: all ease-in-out 250ms;
+}
+
+.about li a:hover,
+.project li a:hover,
+.books li a:hover{
+  color: #b9b9b9;
+}
+
