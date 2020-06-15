@@ -15,11 +15,11 @@
 /**
  * Fetches a random quote from the server and adds it to the DOM.
  */
-function getRandomQuote() {
+function getData() {
   console.log('Fetching a random quote.');
 
   // The fetch() function returns a Promise because the request is asynchronous.
-  const responsePromise = fetch('/random-quote');
+  const responsePromise = fetch('/data');
 
   // When the request is complete, pass the response into handleResponse().
   responsePromise.then(handleResponse);
@@ -38,15 +38,15 @@ function handleResponse(response) {
 
   // When the response is converted to text, pass the result into the
   // addQuoteToDom() function.
-  textPromise.then(addQuoteToDom);
+  textPromise.then(addDataToDom);
 }
 
 /** Adds a random quote to the DOM. */
-function addQuoteToDom(quote) {
-  console.log('Adding quote to dom: ' + quote);
+function addDataToDom(data) {
+  console.log('Adding data to dom: ' + data);
 
-  const quoteContainer = document.getElementById('quote-container');
-  quoteContainer.innerText = quote;
+  const dataContainer = document.getElementById('data-container');
+  dataContainer.innerText = data;
 }
 
 /**
@@ -56,8 +56,8 @@ function addQuoteToDom(quote) {
  * whichever syntax makes the most sense to you.
  */
 function getRandomQuoteUsingArrowFunctions() {
-  fetch('/random-quote').then(response => response.text()).then((quote) => {
-    document.getElementById('quote-container').innerText = quote;
+  fetch('/data').then(response => response.text()).then((data) => {
+    document.getElementById('data-container').innerText = data;
   });
 }
 
@@ -66,8 +66,8 @@ function getRandomQuoteUsingArrowFunctions() {
  * allows you to use the return values directly instead of going through
  * Promises.
  */
-async function getRandomQuoteUsingAsyncAwait() {
-  const response = await fetch('/random-quote');
-  const quote = await response.text();
-  document.getElementById('quote-container').innerText = quote;
+async function getDataUsingAsyncAwait() {
+  const response = await fetch('/data');
+  const data = await response.text();
+  document.getElementById('data-container').innerText = data;
 }
