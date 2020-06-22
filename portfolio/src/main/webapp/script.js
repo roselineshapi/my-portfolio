@@ -34,20 +34,19 @@ async function getDataUsingAsyncAwait() {
 }
 
 function getMessagesJSON(){
-    fetch('/data').then(response => response.json()).then((message)=>{
+    fetch('/data').then(response => response.json()).then((post)=>{
         const messagListElement = document.getElementById('messages');
-        console.log(message);
-        message.forEach(line =>{
-            let listItem = document.createElement("li");  
-            messagListElement.appendChild(listItem);            
-            listItem.innerHTML = line;
+        console.log(post);
+        messagListElement.innerHTML = '';
+        post.forEach((post) =>{
+            messagListElement.appendChild(createListElement(post.comments));            
         });
     }); 
 }
 
 
 function createListElement(text){
-    const liElement = document.createListElement('li');
+    const liElement = document.createElement('li');
     liElement.innerText = text;
     return liElement;
 }

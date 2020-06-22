@@ -24,28 +24,57 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.List;
+import com.google.sps.data.Comments;
+import com.google.appengine.api.datastore.DatastoreService;
+import com.google.appengine.api.datastore.DatastoreServiceFactory;
+import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.PreparedQuery;
+import com.google.appengine.api.datastore.Query;
+import com.google.appengine.api.datastore.Query.SortDirection;
+
+
 
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
-  private ArrayList<String> comments = new ArrayList <String>();
-
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    response.setContentType("application/json");
-    String json = new Gson().toJson(comments);
-    response.getWriter().println(json);
+    Query query = new Query("Comments").addSort("timestamp", SortDirection.DESCENDING);
+
+    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+    PreparedQuery results = datastore.prepare(query);
+
+    List<Comments> comment = new ArrayList<>();
+    for (Entity entity : results.asIterable()) {
+      String message = (String) entity.getProperty("message");
+      long timestamp = (long) entity.getProperty("timestamp");
+
+      Comments userComment = new Comments(message, timestamp);
+      comment.add(userComment);
+    }
+
+    Gson gson = new Gson();
+    String Json = gson.toJson(comment);
+    response.setContentType("application/json;");
+    response.getWriter().println(Json);
+
+
   }
 
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
    //get user input from the form
    String message = request.getParameter("message");
-   if(message != null){
-       comments.add(message);
-   }
-   // Redirect back to the HTML page.
+   long timestamp = System.currentTimeMillis();
+
+    Entity taskEntity = new Entity("Comments");
+    taskEntity.setProperty("message",message);
+    taskEntity.setProperty("timestamp", timestamp);
+    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+    datastore.put(taskEntity);
+
+// Redirect back to the HTML page. 
     response.sendRedirect("/index.html");
    }
 }
