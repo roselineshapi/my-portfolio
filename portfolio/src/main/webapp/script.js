@@ -35,18 +35,50 @@ async function getDataUsingAsyncAwait() {
 
 function getMessagesJSON(){
     fetch('/data').then(response => response.json()).then((message)=>{
-        const messagListElement = document.getElementById('message-container');
-        messageElement.appendChild(
-        createListElement(message[0]));
-        messageElement.appendChild(
-        createListElement(message[1]));
-        messageElement.appendChild(
-        createListElement(message[2]));
+        const messagListElement = document.getElementById('messages');
+        console.log(message);
+        message.forEach(line =>{
+            let listItem = document.createElement("li");  
+            messagListElement.appendChild(listItem);            
+            listItem.innerHTML = line;
+        });
     }); 
 }
+
 
 function createListElement(text){
     const liElement = document.createListElement('li');
     liElement.innerText = text;
     return liElement;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// function getSubtractionGame() {
+//   fetch('/subtraction-game').then(response => response.json()).then((game) => {
+//     const totalEl = document.getElementById('total');
+//     if (game.gameOver) {
+//       // The current game is over, show the total for the next game.
+//       totalEl.innerText = 'Total: 21';
+//     } else {
+//       totalEl.innerText = 'Total: ' + game.currentTotal;
+//     }
+
+//     // Build the list of history entries.
+//     const historyEl = document.getElementById('history');
+//     game.history.forEach((line) => {
+//       historyEl.appendChild(createListElement(line));
+//     });
+//   });
+// }

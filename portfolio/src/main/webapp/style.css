@@ -7,7 +7,8 @@ body{
 }
 .about,
 .project,
-.books {
+.books,
+.message{
   width: 450px;
   background: rgba(0, 0, 0, 0.4);
   padding: 40px;
@@ -28,7 +29,8 @@ body{
 
 .about h1,
 .project h1,
-.books h1{
+.books h1,
+.message h1{
   font-size: 40px;
   letter-spacing: 4px;
   font-weight: 100;
@@ -47,7 +49,8 @@ body{
 
 .about p, 
 .project p,
-.books p{
+.books p,
+.message p{
   text-align: justify;
 }
 
@@ -57,7 +60,8 @@ ul{
 }
 .about li,
 .project li,
-.books li{
+.books li,
+.message li{
   display: inline-block;
   margin: 6px;
   list-style: none;
@@ -65,7 +69,8 @@ ul{
 
 .about li a,
 .project li a,
-.books li a {
+.books li a,
+.message li a {
   color: white;
   text-decoration: none;
   font-size: 60px;
@@ -74,7 +79,35 @@ ul{
 
 .about li a:hover,
 .project li a:hover,
-.books li a:hover{
+.books li a:hover
+.message li a:hover{
   color: #b9b9b9;
 }
+ .form{
+    margin: 0 auto;
+    width: 400px;
+    border: 1px solid #CCC;
+    border-radius: 1em;
+ }
 
+ input, 
+textarea {
+  /* To make sure that all text fields have the same font settings
+     By default, textareas have a monospace font */
+  font: 1em sans-serif;
+
+  /* Uniform text field size */
+  width: 300px;
+  box-sizing: border-box;
+
+  /* Match form field borders */
+  border: 1px solid #999;
+}
+
+textarea {
+  /* Align multiline text fields with their labels */
+  vertical-align: top;
+
+  /* Provide space to type some text */
+  height: 5em;
+}

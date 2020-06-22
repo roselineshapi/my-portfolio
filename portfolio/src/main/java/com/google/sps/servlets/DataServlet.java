@@ -28,24 +28,28 @@ import java.util.List;
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
-   
+
+  private ArrayList<String> comments = new ArrayList <String>();
+
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    //convert to JSON
-    List<String> message;
-    message = new ArrayList<>();
-    message.add("Hello!");
-    message.add("Hola");
-    message.add("Bonjour");
-    String json = convertToJson(message);
-    //send response as JSON
-    response.setContentType("application/json;");
+    response.setContentType("application/json");
+    String json = new Gson().toJson(comments);
     response.getWriter().println(json);
   }
 
-  private String convertToJson(List<String> messages) {
-    Gson gson = new Gson();
-    String json = gson.toJson(messages);
-    return json;
-  }
+  @Override
+  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+   //get user input from the form
+   String message = request.getParameter("message");
+   if(message != null){
+       comments.add(message);
+   }
+   // Redirect back to the HTML page.
+    response.sendRedirect("/index.html");
+   }
 }
+
+
+
+

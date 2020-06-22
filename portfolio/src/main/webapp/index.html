@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
   </head>
-  <body>
+  <body onload="getMessagesJSON()">
     <div class="about">
         <img src="images/rose.jpg" alt="" class="about-img">
         <h1>About Me</h1>
@@ -44,13 +44,26 @@
         <h5>Rich dad Poor dad</h5>
         <img src="images/rd.jpg" width=300>
     </div>
-    <div id="content">
-      <p>Click here </p>
-      <button onclick="getData()">Fetch data!</button>
-      <div id="data-container"></div>
+    <br>
+    <div class = "message">
+         <h1>Message</h1>
+         <p>If you would like to get in touch with me, you can contact me using the form below<p>
+          <form action = "/data" method = "post">
+            <ul>
+                <li>
+                    <label for="msg">Message:</label>
+                    <textarea name="message">
+                    </textarea>
+                </li>
+        </form>
+        <ul id="messages">
+        </ul>
+        <br>
+         <button type="submit">Submit</button>
     </div>
   </body>
 </html>
+
 
 
 
