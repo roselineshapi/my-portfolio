@@ -1,80 +1,102 @@
-
 body{
-  margin: 0;
-  padding: 0;
-  background: url(images/rose2.jpg) no-repeat;
-  background-size: cover;
+    margin: 0;
+    padding: 0;
+    background: url(images/rose2.jpg) no-repeat;
+    background-size: cover;
 }
 .about,
 .project,
-.books {
-  width: 450px;
-  background: rgba(0, 0, 0, 0.4);
-  padding: 40px;
-  text-align: center;
-  margin: auto;
-  margin-top: 5%;
-  color: white;
-  font-family: 'Century Gothic',sans-serif;
+.books,
+.message{
+    width: 450px;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 40px;
+    text-align: center;
+    margin: auto;
+    margin-top: 5%;
+    color: white;
+    font-family: 'Century Gothic',sans-serif;
 }
 
 .about-img,
 .project-img,
 .books-img{
-  border-radius: 50%;
-  width: 200px;
-  height: 200px;
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
 }
 
 .about h1,
 .project h1,
-.books h1{
-  font-size: 40px;
-  letter-spacing: 4px;
-  font-weight: 100;
+.books h1,
+.message h1{
+    font-size: 40px;
+    letter-spacing: 4px;
+    font-weight: 100;
 }
 
 .about h5,
 .project h5,
 .books h5{
-  font-size: 20px;
-  letter-spacing: 3px;
-  font-weight: 100;
-  font-family: 'Century Gothic',sans-serif;
-
-  
+    font-size: 20px;
+    letter-spacing: 3px;
+    font-weight: 100;
+    font-family: 'Century Gothic',sans-serif;
 }
 
 .about p, 
 .project p,
-.books p{
-  text-align: justify;
+.books p,
+.message p{
+    text-align: justify;
 }
 
 ul{
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
 .about li,
 .project li,
-.books li{
-  display: inline-block;
-  margin: 6px;
-  list-style: none;
+.books li,
+.message li{
+    display: inline-block;
+    margin: 6px;
+    list-style: none;
 }
 
 .about li a,
 .project li a,
-.books li a {
-  color: white;
-  text-decoration: none;
-  font-size: 60px;
-  transition: all ease-in-out 250ms;
+.books li a,
+.message li a {
+    color: white;
+    text-decoration: none;
+    font-size: 60px;
+    transition: all ease-in-out 250ms;
 }
 
 .about li a:hover,
 .project li a:hover,
-.books li a:hover{
+.books li a:hover
+.message li a:hover{
   color: #b9b9b9;
 }
 
+.form{
+    margin: 0 auto;
+    width: 400px;
+    border: 1px solid #CCC;
+    border-radius: 1em;
+ }
+
+ input, 
+textarea {
+    font: 1em sans-serif;
+    width: 300px;
+    box-sizing: border-box;
+    border: 1px solid #999;
+}
+
+textarea {
+    vertical-align: top;
+    height: 5em;
+}

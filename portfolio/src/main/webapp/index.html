@@ -1,51 +1,69 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>My Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
-  </head>
-  <body>
-    <div class="about">
-        <img src="images/rose.jpg" alt="" class="about-img">
-        <h1>About Me</h1>
-        <h5>Hello and welcome to my world.</h5>
-        <p>My name is Roseline Shapi. I am rising Junior at Mississippi Valley.I am Computer Science major. I first learned how to program during my freshman year of college and ever since, l have been hooked. 
-        My mind was blown away by what is possible through programming and l anticipate to learn more. My ultimate goal is to use programming to solve real world problem whether it is on the front end or on the back end. Continue to scroll down to learn more about me.<p>
-    </div>
-    <br>
-    <div class = "project">
-        <img src = "images/proj.jpeg" alt = "" class = "project-img">
-        <h1>Projects</h1>
-        <h5>“Nothing will work unless you do.” –<i>MAYA ANGELOU<i></h5>
-        <p>The best way to learn is through practice. I try to implement what l learn and build small projects.
-        Here are some projects that l have done</p>
+    <head>
+        <meta charset="UTF-8">
+        <title>My Portfolio</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="script.js"></script>
+    </head>
+    <body onload="getMessagesJSON()">
+        <div class="about">
+            <img src="images/rose.jpg" alt="" class="about-img">
+            <h1>About Me</h1>
+            <h5>Hello and welcome to my world.</h5>
+            <p>My name is Roseline Shapi. I am rising Junior at Mississippi Valley State University. I am Computer Science major. I first learned how to program during my freshman year of college and ever since, l have been hooked. 
+            My mind was blown away by what is possible through programming and l anticipate to learn more. My ultimate goal is to use programming to solve real world problem whether it is on the front end or on the back end. Continue to scroll down to learn more about me.<p>
+        </div>
         <br>
-        <h5>Flashcard</h5>
-        <img src="https://recordit.co/1gFBDOfUPK.gif" width=200>
+        <div class = "project">
+            <img src = "images/proj.jpeg" alt = "" class = "project-img">
+            <h1>Projects</h1>
+            <h5>“Nothing will work unless you do.” –<i>MAYA ANGELOU<i></h5>
+            <p>The best way to learn is through practice. I try to implement what l learn and build small projects.
+            Here are some projects that l have done</p>
+            <br>
+            <h5>Flashcard</h5>
+            <img src="https://recordit.co/1gFBDOfUPK.gif" width=200>
+            <br>
+            <p> Used swift to create an ios mobile application that helps the uset practice questions</p>
+            <br>
+            <p>If I am not coding, I am probably time travelling. Yes time travelling is possible, thanks to books. I love love reading Books. Keep scrolling to see some of my favorite books. </p>
+        </div>
         <br>
-        <p> Used swift to create an ios mobile application that helps the uset practice questions</p>
+        <div class = "books">
+            <img src = "images/books.jpg" alt = "" class = "books-img">
+            <h1>Books</h1>
+            <p>Here are some of the books that I enjoyed reading</p>
+            <br>
+            <h5>Lean in </h5>
+            <img src="images/Lean_In_book.jpg" width=300>
+            <br>
+            <h5>Who moved my cheese</h5>
+            <img src="images/mv.jpg" width=300>
+            <br>
+            <h5>Rich dad Poor dad</h5>
+            <img src="images/rd.jpg" width=300>
+        </div>
         <br>
-        <p>If I am not coding, I am probably time travelling. Yes time travelling is possible, thanks to books. I love love reading Books. Keep scrolling to see some of my favorite books. </p>
-    </div>
-    <br>
-    <div class = "books">
-        <img src = "images/books.jpg" alt = "" class = "books-img">
-        <h1>Books</h1>
-        <p>Here are some of the books that I enjoyed reading</p>
-        <br>
-        <h5>Lean in </h5>
-        <img src="images/Lean_In_book.jpg" width=300>
-        <br>
-        <h5>Who moved my cheese</h5>
-        <img src="images/mv.jpg" width=300>
-        <br>
-        <h5>Rich dad Poor dad</h5>
-        <img src="images/rd.jpg" width=300>
-    </div>
-  </body>
+        <div class = "message">
+            <h1>Message</h1>
+            <p>If you would like to get in touch with me, you can contact me using the form below<p>
+            <form action = "/data" method = "post">
+                <ul>
+                    <li>
+                        <label for="msg">Message:</label>
+                        <textarea name="message"  required>
+                        </textarea>
+                    </li>
+            </form>
+            <ul id="messages">
+            </ul>
+            <br>
+            <button type="submit">Submit</button>
+        </div>
+    </body>
 </html>
+
 
 
 
