@@ -31,6 +31,9 @@ import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Query.SortDirection;
+import com.google.cloud.language.v1.Document;
+import com.google.cloud.language.v1.LanguageServiceClient;
+import com.google.cloud.language.v1.Sentiment;
 
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
 @WebServlet("/data")
@@ -45,8 +48,9 @@ public class DataServlet extends HttpServlet {
         List<Comments> comment = new ArrayList<>();
         for (Entity entity : results.asIterable()) {
             String message = (String) entity.getProperty("message");
-            long timestamp = (long) entity.getProperty("timestamp");    
-            Comments userComment = new Comments(message, timestamp);
+            long timestamp = (long) entity.getProperty("timestamp"); 
+            double score = (double) entity.getProperty("score");   
+            Comments userComment = new Comments(message, timestamp, score);
             comment.add(userComment);
         }
 
@@ -61,15 +65,31 @@ public class DataServlet extends HttpServlet {
         //get user input from the form
         String message = request.getParameter("message");
         long timestamp = System.currentTimeMillis();
-
+        
+        //calculate thesentiment of the message entered
+        Document doc =
+            Document.newBuilder().setContent(message).setType(Document.Type.PLAIN_TEXT).build();
+        LanguageServiceClient languageService = LanguageServiceClient.create();
+        Sentiment sentiment = languageService.analyzeSentiment(doc).getDocumentSentiment();
+        double score = (double)sentiment.getScore();
+        languageService.close();
+        
+        
         Entity taskEntity = new Entity("Comments");
+        taskEntity.setProperty("score", score);
         taskEntity.setProperty("message",message);
         taskEntity.setProperty("timestamp", timestamp);
         DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-        datastore.put(taskEntity);
+        datastore.put(taskEntity); 
+        
+        //show sentiment score to the user
+        response.setContentType("text/html;");
+        response.getWriter().println("<h1>Sentiment Analysis</h1>");
+        response.getWriter().println("<p>You entered: " + message + "</p>");
+        response.getWriter().println("<p>Sentiment analysis score: " + score + "</p>");
+        response.getWriter().println("<p><a href=\"/\">Back</a></p>");
 
-        // Redirect back to the HTML page. 
-        response.sendRedirect("/index.html");
+       
     }
 }
 
