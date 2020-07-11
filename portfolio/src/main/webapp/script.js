@@ -21,7 +21,7 @@ async function getDataUsingAsyncAwait() {
 
 function getMessagesJSON(){
     fetch('/data').then(response => response.json()).then((post)=>{
-        const messagListElement = document.getElementById('messages');
+        const messagListElement = document.getElementById('messages',);
         console.log(post);
         messagListElement.innerHTML = '';
         post.forEach((post) =>{
@@ -29,7 +29,6 @@ function getMessagesJSON(){
         });
     }); 
 }
-
 
 function createListElement(text){
     const liElement = document.createElement('li');
